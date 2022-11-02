@@ -1,6 +1,5 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
-
 #include "MathOperations.h"
 
 TEST_CASE ( "Factorials are computed", "[factorial]") {
@@ -28,4 +27,15 @@ TEST_CASE ( "Check if integer is even", "[even]") {
   REQUIRE( !m.isEven(5));
   REQUIRE( m.isEven(1240826084));
   REQUIRE( !m.isEven(6598463));
+}
+
+TEST_CASE ( "Division", "[add]") {
+  MathOperations m;
+  REQUIRE( m.divide(0,1) == 0 );
+  REQUIRE( m.divide(1,0) == 0 );
+  REQUIRE( m.divide(100, 100) == 1 );
+  REQUIRE( m.divide(100000, 2000000) == 0 );
+  REQUIRE( m.divide(-100000, 2000000) == 0 );
+  REQUIRE( m.divide(100, -100) == -1 );
+  REQUIRE( m.divide(-100, 100) == -1 );
 }
